@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  jupyter-session-1:
+    build: 
+      context: .
+      dockerfile: DockerFile
+    image: noah-dev-notebook
+    container_name: noah-notebook-1
+    ports:
+      - "8899:8888"
+    volumes:
+      - ./:/notebooks
+      - ${GEEE_STORAGE_DIR}:${GEEE_STORAGE_DIR}:Z
+    env_file:
+      - .env
+    environment:
+      - EE_PROJECT_NAME
+      - GEEE_STORAGE_DIR
+      - NOAH_MINI_DIR
+      - ECCC_DATA_DIR
+      - SANFI_STORAGE_DIR
+      - LANDSAT8_DATA_STORAGE_DIR
+      - JUPYTER_TOKEN
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
