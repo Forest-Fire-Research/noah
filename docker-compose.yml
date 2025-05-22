@@ -1,12 +1,32 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:12.3
+    container_name: noah-db-env
+    build:
+      context: .
+      dockerfile: DockerFile.database
+      network: host
+    user: root
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+      - "${POSTGRES_HOST_PORT}:5432"
+    volumes: 
+      - ./DB:/var/lib/postgresql/data:Z
+
+
   jupyter-session-1:
     build: 
       context: .
-      dockerfile: DockerFile
-    image: noah-dev-notebook
-    container_name: noah-notebook-1
+      dockerfile: DockerFile.jupyter
+    image: noah-notebook
+    container_name: noah-notebook-env-1
     ports:
       - "8899:8888"
     volumes:
@@ -15,7 +35,7 @@ services:
     env_file:
       - .env
     environment:
-      - EE_PROJECT_NAME
+      - EE_PROJECT_NAME_1
       - GEEE_STORAGE_DIR
       - NOAH_MINI_DIR
       - ECCC_DATA_DIR

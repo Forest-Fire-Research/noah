@@ -1,8 +1,0 @@
-FROM jupyter/base-notebook:latest
-
-WORKDIR /notebooks
-
-COPY requirements.txt requirements.txt
-
-# install packages 
-RUN pip install --no-cache-dir -r requirements.txt
