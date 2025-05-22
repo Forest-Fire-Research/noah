@@ -35,7 +35,7 @@ services:
     env_file:
       - .env
     environment:
-      - EE_PROJECT_NAME_1
+      - EE_PROJECT_NAME
       - GEEE_STORAGE_DIR
       - NOAH_MINI_DIR
       - ECCC_DATA_DIR
