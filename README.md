@@ -1,8 +1,23 @@
 # NOAH: Now Observation Assemble Horizon
 
-NOAH is a GenAI dataset that covers 8,742,469 km2 of non-overlapping land areas in Canada at 815 distinct locations under 5 modalities at 30 m spatial resolution, where each modality covers 40,000 km2
-
 OpenReview Link: https://openreview.net/pdf?id=FCCVwnYD2N
+
+> `TLDR`: NOAH is a GenAI dataset that covers 8,742,469 km2 of non-overlapping land areas in Canada at 815 distinct locations under 5 modalities at 30 m spatial resolution, where each modality covers 40,000 km2.
+
+Earth observation and Remote Sensing (RS) data are widely used in various applications, including natural disaster modeling and prediction. 
+Currently, there are two main types of satellites used in RS: geostationary and polar orbiting.
+However, the coverage of geostationary satellites is limited to a smaller region. 
+Additionally, images from the polar orbiting satellites are discontinuous, which limits their effectiveness for real-time disaster modeling, especially in rapidly evolving situations like wildfires. 
+To address these limitations, we introduce ***N*ow *O*bservation *A*ssemble *H*orizon** (`NOAH`), a multi-modal, sensor fusion dataset that combines Ground-Based Sensors (GBS) of weather stations with topography, vegetation (land cover, biomass, and crown cover), and fuel types.
+NOAH is collated using publicly available Canadian data from Environment and Climate Change Canada (ECCC), Spatialized Canadian National Forest Inventory (SCANFI) and Landsat 8, which are well-maintained, documented, and reliable.
+Models trained on NOAH can produce real-time data for disaster modeling in remote locations, complementing the use of field instruments and can be used for Generative Artificial Intelligence (GenAI) applications.
+The baseline modeling was done on UNet backbone with Feature-wise Linear Modulation (FiLM) injection of GBS data.
+
+Each image in NOAH is 100 MB+, with about 234K+, totaling to 20TB+ of data.
+Hence, a mini version of the NOAH is made accessible at [Hugging Face](https://huggingface.co/datasets/mutakabbirCarleton/NOAH-mini).
+Full data access can be provided upon request. 
+It should be noted that a physical hard drive will need to be shipped to make it possible.
+The code for the research can be accessed from [GitHub](https://github.com/Forest-Fire-Research/noah).
 
 This repository contains the following code:
   - Collation of NOAH and NOAH mini datasets
